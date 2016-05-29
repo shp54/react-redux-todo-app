@@ -25,8 +25,8 @@ const Todos = ({todos, dispatch}) => (
 			</div>
 		)
 
-function mapStateToProps(todos) {
-  return { todos: todos.toJS() }
+function mapStateToProps(state) {
+  return { todos: state.get('todos').toJS() }
 }
 
 export default connect(mapStateToProps)(Todos)
