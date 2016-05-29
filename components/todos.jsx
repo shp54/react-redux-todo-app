@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import NewTodo from './newTodo'
 import { addTodo, deleteTodo } from '../actions'
 
-const Todos = ({todos, dispatch})=> (
+const Todos = ({todos, dispatch}) => (
 			<div>
 				<h1>Todos</h1>
 				<NewTodo onChange={e => {
@@ -14,7 +14,11 @@ const Todos = ({todos, dispatch})=> (
 					}
 				}} />
 				{todos.map((todo, index) => 
-						<p key={index}>{todo}
+						<p key={index}
+							style={{
+							textDecoration: todo.completed ? 'line-through' : 'none'
+							}}>
+						{todo.text}
 						<button onClick={e => dispatch(deleteTodo(index))}>X</button>
 						</p>
 				)}
@@ -22,7 +26,7 @@ const Todos = ({todos, dispatch})=> (
 		)
 
 function mapStateToProps(todos) {
-  return { todos }
+  return { todos: todos.toJS() }
 }
 
 export default connect(mapStateToProps)(Todos)
