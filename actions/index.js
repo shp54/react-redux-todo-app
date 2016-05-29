@@ -11,3 +11,10 @@ export function deleteTodo(index){
 		index
 	}
 }
+
+export function setVisibilityFilter(filter){
+	return {
+		type: 'setVisibilityFilter',
+		filter
+	}
+}

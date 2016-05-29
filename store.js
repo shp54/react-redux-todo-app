@@ -1,11 +1,12 @@
 import Immutable from 'immutable'
 import { createStore } from 'redux'
-import todos from './reducers/todos'
+import reducer from './reducers/todos'
 
 let initialState = Immutable.fromJS({
+	filter: 'SHOW_ALL',
 	todos: [
 		{text: 'Code More!', completed: false}
 	]
 })
 
-export default createStore(todos, initialState)
+export default createStore(reducer, initialState, window.devToolsExtension && window.devToolsExtension())
