@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import NewTodo from './newTodo'
 import Filter from './filter'
-import { addTodo, deleteTodo } from '../actions'
+import { addTodo, toggleTodo } from '../actions'
 
 const Todos = ({todos, filter, dispatch}) => (
 			<div>
@@ -21,7 +21,7 @@ const Todos = ({todos, filter, dispatch}) => (
 							display: todo.completed && filter == 'SHOW_ACTIVE' ? 'none' : 'block'
 							}}>
 						{todo.text}
-						<button onClick={e => dispatch(deleteTodo(index))}>X</button>
+						<button onClick={e => dispatch(toggleTodo(index))}>X</button>
 						</p>
 				)}
 				<Filter />

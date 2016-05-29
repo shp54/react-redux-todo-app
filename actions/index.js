@@ -5,9 +5,9 @@ export function addTodo(text){
 	}
 }
 
-export function deleteTodo(index){
+export function toggleTodo(index){
 	return {
-		type: 'deleteTodo',
+		type: 'toggleTodo',
 		index
 	}
 }
