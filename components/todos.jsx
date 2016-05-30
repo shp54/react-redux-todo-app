@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import NewTodo from './newTodo'
+import TodoList from './todoList'
 import Filter from './filter'
 import { addTodo, toggleTodo } from '../actions'
 
@@ -13,16 +14,8 @@ const Todos = ({todos, filter, dispatch}) => (
 						e.target.value = ''
 					}
 				}} />
-				{(filter != 'SHOW_ACTIVE' ? todos : todos.filter((t) => !t.completed))
-				.map((todo, index) => 
-						<p key={index}
-							style={{
-							textDecoration: todo.completed ? 'line-through' : 'none'
-						}}>
-						{todo.text}
-						<button onClick={e => dispatch(toggleTodo(index))}>X</button>
-						</p>
-				)}
+				<TodoList todos={(filter != 'SHOW_ACTIVE' ? todos : todos.filter((t) => !t.completed))} 
+						  onTodoClick={(index) => dispatch(toggleTodo(index))} />
 				<Filter />
 			</div>
 		)
